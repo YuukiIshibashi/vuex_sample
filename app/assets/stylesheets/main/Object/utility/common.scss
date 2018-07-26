@@ -1,0 +1,138 @@
+@import 'colors.scss';
+@import 'mixins.scss';
+@import 'keyframes.scss';
+
+.cf::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.flex{
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.color-white{
+  color: #fff;
+}
+.color-alert{
+  color: $alert;
+}
+.color-gray{
+  color: #4E4D4D;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+
+.left{
+  text-align: left;
+}
+.right{
+  text-align: right;
+}
+.center{
+  text-align: center;
+}
+
+.underline-g{
+  border-bottom: solid 1px $gray-l;
+}
+.underline-w{
+  border-bottom: solid 1px #fff;
+}
+.table{
+  display: table;
+}
+.table-cell{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// background
+.rails_full_bg{
+  @include bg-gradient($rails-full-gs,$rails-full-gg);
+}
+.rails_part_bg{
+  @include bg-gradient($rails-part-gs,$rails-part-gg);
+}
+.ai_bg{
+  @include bg-gradient($ai-gs,$ai-gg);
+}
+.main_bg{
+  @include bg-gradient($main-gs,$main-gg);
+}
+.gray-ll_bg{
+  background-color: $gray-ll;
+}
+.gray-l_bg{
+  background-color: $gray-l;
+}
+.white_bg{
+  background-color: $white-a;
+}
+.white-aa_bg{
+  background-color: $white-aa;
+}
+.topic-d_bg{
+  background-color: $topic-d;
+}
+.topic-l_bg{
+  background-color: $topic-l;
+}
+.border-radius{
+  border-radius: 10px;
+}
+
+.map_area{
+  width: 90%;
+  margin: 20px auto;
+  @media screen and (max-width: 768px){
+    width: 100%;
+  }
+}
+
+//margin/padding
+@for $i from 0 through 10 {
+  .mt-#{$i * 5} {
+    margin-top:#{$i * 5}px;
+  }
+  .mb-#{$i * 5} {
+    margin-bottom:#{$i * 5}px;
+  }
+  .mr-#{$i * 5} {
+    margin-right:#{$i * 5}px;
+  }
+  .ml-#{$i * 5} {
+    margin-left:#{$i * 5}px;
+  }
+  .m-#{$i * 5} {
+    margin:#{$i * 5}px;
+  }
+  .pt-#{$i * 5} {
+    padding-top:#{$i * 5}px;
+  }
+  .pb-#{$i * 5} {
+    padding-bottom:#{$i * 5}px;
+  }
+  .pr-#{$i * 5} {
+    padding-right:#{$i * 5}px;
+  }
+  .pl-#{$i * 5} {
+    padding-left:#{$i * 5}px;
+  }
+  .p-#{$i * 5} {
+    padding:#{$i * 5}px;
+  }
+}
+
+.br_sp {
+  display: none;
+  @media screen and (max-width: 480px){
+    display: block;
+  }
+}

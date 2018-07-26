@@ -1,0 +1,126 @@
+@import 'common.scss';
+
+.phase_is_active{
+  background-color: $topic-d !important;
+}
+.hidden{
+  visibility: hidden;
+}
+.none{
+  display: none;
+}
+.opacity{
+  opacity: 0;
+}
+.absolute{
+  position: absolute;
+}
+.effect{
+  transition: all .5s ease;
+  @at-root{
+    &-1{
+      transition-delay: 0.2s;
+    }
+    &-2{
+      transition-delay: 0.4s;
+    }
+  }
+}
+.effect-slide{
+  transition: all .8s ease;
+}
+.hover{
+  &:hover{
+    background-color: rgba(255,255,255,.4);
+    @include transition(.5s);
+  }
+}
+//tabメニュー用
+.tab{
+  @at-root{
+    &_contents{
+      position: relative;
+    }
+    &_triangle{
+      width: 0;
+      height: 0;
+      border-top: 2vw solid transparent;
+      border-right: 1.5vw solid transparent;
+      border-bottom: 2vw solid $white;
+      border-left: 1.5vw solid transparent;
+      position: absolute;
+      top: -4vw;
+      @media screen and (max-width: 768px){
+        display: none;
+      }
+    }
+  }
+}
+.tab-close{
+  display: none;
+  @media screen and (max-width: 768px){
+    z-index: 120;
+    font-size: 2rem;
+    display: block;
+    background-color: $gray;
+    color: $white;
+    width: 90%;
+    margin: 20px auto;
+  }
+}
+// hoverアクション
+.expansion{
+  -moz-transition: -moz-transform 0.3s linear;
+  -webkit-transition: -webkit-transform 0.3s linear;
+  -o-transition: -o-transform 0.3s linear;
+  -ms-transition: -ms-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  &:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+.slide{
+  -moz-transition: -moz-transform 0.3s linear;
+  -webkit-transition: -webkit-transform 0.3s linear;
+  -o-transition: -o-transform 0.3s linear;
+  -ms-transition: -ms-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  &:hover{
+    -webkit-transform: translate(-1vw);
+    -moz-transform: translate(-1vw);
+    -o-transform: translate(-1vw);
+    -ms-transform: translate(-1vw);
+    transform: translate(-1vw);
+  }
+}
+.slide-phase{
+  transform: translate(-5vw);
+}
+.shadow{
+  transition-property: all;
+  transition-duration: 0.3s;
+  &:hover{
+    box-shadow: 0 0 50px 10px rgba(0,0,0,0.3)inset;
+  }
+}
+.no_scroll{
+  position: fixed;
+}
+.fadein{
+  margin: auto 0 auto 10%;
+  opacity: 1;
+  z-index: 100;
+}
+
+@keyframes scale {
+  0%{
+    transform: scale(1,1);
+  }
+  100%{
+  transform: scale(1.1,1.1);
+  }
+}

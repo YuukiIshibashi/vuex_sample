@@ -1,0 +1,105 @@
+.string-normal{
+  line-height: 2
+}
+.string-narrow{
+  line-height: 1.5
+}
+.string-title{
+  font-size: 5rem;
+  @media screen and (max-width: 1150px){
+    font-size: 4rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 4rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 4rem;
+  }
+}
+
+.string-xxl{
+  font-size: 4rem;
+  @media screen and (max-width: 1150px){
+    font-size: 3rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 2.4rem;
+  }
+}
+.string-xl{
+  font-size: 3.5rem;
+  @media screen and (max-width: 1150px){
+    font-size: 3rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 2.4rem;
+  }
+}
+.string-l{
+  font-size: 2.3rem;
+  @media screen and (max-width: 1150px){
+    font-size: 2rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 2rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1.6rem;
+  }
+}
+.string-m{
+  font-size: 2rem;
+  @media screen and (max-width: 1150px){
+    font-size: 1.8rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 1.8rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1.6rem;
+    line-height: 1.9;
+  }
+}
+.string-s{
+  font-size: 1.5rem;
+  @media screen and (max-width: 1150px){
+    font-size: 1.2rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1.4rem;
+    line-height: 1.9;
+  }
+}
+.string-xs{
+  font-size: 1rem;
+  @media screen and (max-width: 1150px){
+    font-size: 1rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1rem;
+  }
+}
+.string-bold{
+  font-weight: bold;
+}
+.string-lighter{
+  font-weight: lighter;
+}
+.section-title{
+  margin: 8vh auto 4vh;
+  @media screen and (max-width: 480px){
+    margin: 5vh auto 3vh;
+  }
+}

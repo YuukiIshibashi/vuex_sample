@@ -1,0 +1,36 @@
+@import '../utility/common.scss';
+
+.global_indicator{
+  margin-bottom: 20px;
+  @at-root{
+    &_list{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    &_item{
+      border: solid 1px $topic-l;
+      color:$topic-l;
+      font-size: 2rem;
+      flex-basis: 50px;
+      height: 50px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 50px;
+      &.is_active{
+        background-color: $topic-l;
+        color:$white;
+      }
+      &.is_done{
+        background-color: $gray-l;
+        color:$white;
+        border: solid 1px $gray-l;
+      }
+    }
+  }
+}
+
+.register_area{
+  padding: 10%;
+  background-color: $gray-ll
+}

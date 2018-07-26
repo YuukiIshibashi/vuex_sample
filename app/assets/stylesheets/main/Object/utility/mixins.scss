@@ -1,0 +1,415 @@
+@mixin flex($width){
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  > li{
+    flex-basis: $width;
+  }
+}
+
+@mixin deco-circle($position,$color,$size){
+  position: relative;
+  z-index: 2;
+  *{
+    z-index: 10;
+    position: relative;
+  }
+  &::before{
+    z-index: 1;
+    position: absolute;
+    content: '';
+    display: block;
+    width: $size#{'vw'};
+    height: $size#{'vw'};
+    top: -$size/3#{'vw'};
+    left: $position;
+    transform: translate(-$position, 0);
+    border: solid 2px $color;
+    border-radius: 50%;
+  }
+}
+
+
+@mixin underline{
+  position: relative;
+  &::before{
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    bottom: 30%;
+    left: 0;
+    background-color: #4E4D4D;
+    position: absolute;
+    @include transition(.5s);
+  }
+  &:hover:before{
+    width: 100%;
+  }
+}
+@mixin img-maintenance($ratio) {
+  position: relative;
+  overflow: hidden;
+  &::before{
+    content:'';
+    display:block;
+    width:100%;
+    height:0;
+    padding-top: $ratio#{'%'};
+  }
+  >.img-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+}
+@mixin key-visual($height){
+  background-size: cover;
+  height: $height;
+  background-position: center;
+  // @include overlay(.5);
+}
+@mixin key-visual_title{
+  z-index: 100;
+  font-family: serif;
+  margin-left: 10%;
+  @include center-vertical(50%);
+  @media screen and (max-width: 768px){
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+@mixin center-vertical($ratio) {
+  position: absolute;
+  top: $ratio;
+  transform: translateY(-$ratio);
+}
+@mixin transition($speed){
+  transition-property: all;
+  transition-duration: $speed;
+}
+@mixin box-shadow($horizontal,$vertical,$blur,$spread,$alpha){
+  box-shadow:$horizontal $vertical $blur $spread rgba(0,0,0,$alpha);
+}
+@mixin box-shadow-inset($horizontal,$vertical,$blur,$spread,$alpha){
+  box-shadow:$horizontal $vertical $blur $spread rgba(0,0,0,$alpha) inset;
+}
+@mixin clearfix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+@mixin overlay($opacity) {
+  position: relative;
+  &::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,$opacity);
+  }
+}
+@mixin navigation($left,$right,$size,$color) {
+  content: "";
+  display: block;
+  position: absolute;
+  top:0;
+  left: $left;
+  right: $right;
+  width: 0;
+  height: 0;
+  border-top: $size solid transparent;
+  border-right: $size solid transparent;
+  border-bottom: $size solid transparent;
+  border-left: $size solid $color;
+}
+//Loadmap
+@function calc-z-index($all,$order) {
+  @return ($all - $order + 1);
+}
+@function  grow-rate($rate) {
+  @return ($rate * 1.1);
+}
+@function  item-width($number) {
+  @return (100/$number - 1);
+}
+//@mixin loadmap(ナビの色,背景の色,全部で何個になる？)
+//htmlの方で多く幅をとりたいアイテムに.growのclassをつける
+@mixin loadmap($color,$bg-color,$sum){
+  .loadmap{
+    @at-root{
+      &_flow{
+        width: 100%;
+        @for $i from 2 through $sum {
+          li.grow#{$i}{
+            flex-grow: grow-rate($i);
+          }
+        }
+      }
+      &_flow_sub{
+        background: $white-aa;
+        padding: 30px;
+        @media screen and (max-width: 480px){
+        padding: 2%;
+        }
+      }
+      &_flow_nav{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: stretch;
+        @media screen and (max-width: 480px){
+          margin-bottom: 5px;
+        }
+        >li{
+          white-space: nowrap;
+          position: relative;
+          height: 30px;
+          line-height: 30px;
+          padding-left: 30px;
+          margin-right: 1%;
+          background-color: $color;
+          @media screen and (max-width: 480px){
+            color: transparent;
+            height: 15px;
+            line-height: 15px;
+          }
+          width: item-width($sum)#{'%'};
+          &:nth-of-type(1){
+            z-index: $sum;
+            &::after{
+              @include navigation(auto,-30px,15px,$color);
+              @media screen and (max-width: 480px){
+                @include navigation(auto,-15px,7.5px,$color);
+              }
+            }
+          }
+          @for $i from 2 through $sum {
+            &:nth-of-type(#{$i}){
+              z-index: calc-z-index($sum,$i);
+              &::before{
+                @include navigation(0,auto,15px,$bg-color);
+                @media screen and (max-width: 480px){
+                  @include navigation(0,auto,7.5px,$bg-color);
+                }
+              }
+              &::after{
+                @include navigation(auto,-30px,15px,$color);
+                @media screen and (max-width: 480px){
+                  @include navigation(auto,-15px,7.5px,$color);
+                }
+              }
+            }
+          }
+          &:last-child{
+            z-index: 1;
+            &::before{
+              @include navigation(0,auto,15px,$bg-color);
+              @media screen and (max-width: 480px){
+                @include navigation(0,auto,7.5px,$bg-color);
+              }
+            }
+            &::after{
+              @include navigation(auto,-30px,15px,$color);
+              @media screen and (max-width: 480px){
+                @include navigation(auto,-15px,7.5px,$color);
+              }
+            }
+          }
+        }
+      }
+      &_flow_contents{
+        display: flex;
+        align-items: stretch;
+        > .loadmap_flow_contents_item{
+          padding: 2%;
+          margin-right: 1%;
+          background-color: $white;
+          position: relative;
+          width: (100/$sum)#{'%'};
+          @include box-shadow(5px,3px,8px,1px, .3);
+          @media screen and (max-width: 480px){
+            padding: 5px;
+          }
+        }
+      }
+      .division{
+        background-color: $white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        >div{
+          display: block;
+          width: 100%;
+          background-color: $gray-ll;
+          margin:  2px 2px 5px 2px;
+          padding: 2px;
+        }
+      }
+      &_flow_phase{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        > .loadmap_flow_phase_item{
+          background-color: $gray-ll;
+          flex-basis: 32%;
+          padding: 10px;
+          @media screen and (max-width: 480px){
+            padding: 2px;
+          }
+        }
+      }
+      &_course_btn{
+        margin: 10px 20px 50px 0;
+        font-family: serif;
+      }
+    }
+  }
+  .flexible{
+    .loadmap{
+      @at-root{
+        &_flow_nav{
+          @media screen and (max-width: 768px){
+            display: none;
+          }
+        }
+        &_flow_contents{
+          @media screen and (max-width: 768px){
+            display: block;
+          }
+          >li{
+            @media screen and (max-width: 768px){
+              width: 100%;
+              margin: 0 auto 10px;
+            }
+          }
+          > .loadmap_flow_contents_item{
+            &::after{
+              @media screen and (max-width: 768px){
+                position: relative;
+                bottom: auto;
+                width: 100%;
+                margin: 0;
+              }
+            }
+          }
+          .division{
+            @media screen and (max-width: 480px){
+              display: flex;
+              flex-wrap: wrap;
+              >div{
+                flex-basis: 48%;
+              }
+            }
+          }
+        }
+        &_flow_phase{
+          @media screen and (max-width: 480px){
+            display: block;
+          }
+          li{
+            @media screen and (max-width: 480px){
+              width: 100%;
+              margin: 5px auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// font-size
+@mixin string-title{
+  font-size: 5rem;
+  @media screen and (max-width: 1150px){
+    font-size: 4rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 4rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 4rem;
+  }
+}
+
+@mixin string-xxl{
+  font-size: 4rem;
+  @media screen and (max-width: 1150px){
+    font-size: 3rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 3rem;
+  }
+}
+@mixin string-xl{
+  font-size: 3.5rem;
+  @media screen and (max-width: 1150px){
+    font-size: 3rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 3rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 2.4rem;
+  }
+}
+@mixin string-l{
+  font-size: 2.3rem;
+  @media screen and (max-width: 1150px){
+    font-size: 2rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 2rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1.6rem;
+    line-height: 1.9;
+  }
+}
+@mixin string-m{
+  font-size: 2rem;
+  @media screen and (max-width: 1150px){
+    font-size: 1.8rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 1.8rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1.6rem;
+    line-height: 1.9;
+  }
+}
+@mixin string-s{
+  font-size: 1.5rem;
+  @media screen and (max-width: 1150px){
+    font-size: 1.2rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1.4rem;
+    line-height: 1.9;
+  }
+}
+@mixin string-xs{
+  font-size: 1rem;
+  @media screen and (max-width: 1150px){
+    font-size: 1rem;
+  }
+  @media screen and (min-width: 480px) and (max-width: 768px){
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 480px){
+    font-size: 1rem;
+  }
+}

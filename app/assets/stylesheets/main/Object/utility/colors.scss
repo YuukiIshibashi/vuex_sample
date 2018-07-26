@@ -1,0 +1,96 @@
+
+$blue: rgba(0,121,192,1);
+$blue-l: rgba(167,198,226,1);
+$blue-ll:rgba(211,225,243,1);
+$blue-d: #18589D;
+$blue-dd: #131F3F;
+
+$purple-l: rgba(163,202,235,1);
+$green-ll: rgba(139,216,206,1);
+$green-ll-a: rgba(139,216,206,.3);
+$green-l: rgba(0,188,179,1);
+$green-d: rgba(0,152,148,1);
+$blue-green: rgba(18,151,175,1);
+
+$orange: rgba(255,146,113,1);
+$orange-l: rgba(255,173,142,1);
+$orange-ll: rgba(255,227,194,1);
+
+$pink: rgba(255,139,147,1);
+$pink-l: rgba(250,175,175,1);
+$pink-ll: rgba(252,210,207,1);
+$pink_d: rgba(222,96,113,1);
+
+//common
+$black: #000;
+$overlay_black: rgba(0, 0, 0, .9);
+$overlay_black-75: rgba(0, 0, 0, .75);
+$white: #fff;
+$white-a: rgba(255,255,255,.9);
+$white-aa: rgba(255,255,255,.5);
+$gray: #9fa0a0;
+$gray-l: rgba(216,216,216,1);
+$gray-ll: rgba(247,247,247,1);
+
+//topic
+$topic-d: rgba(222,96,113,1);
+$topic-l: rgba(255,128,129,1);
+
+$briefing: #b8292d;
+
+//alert
+$alert: rgba(195,13,35,1);
+$alert-light: rgba(230,169,171,1);
+$alert-bg: rgba(230,169,171,.5);
+
+//base
+$base-gs: rgba(0,46,75,1);
+$base-gg: rgba(46,65,90,1);
+
+//main
+$main-gs: rgba(102,159,207,1);
+$main-gg: rgba(127,196,228,1);
+
+//ai
+$ai-base: rgba(18,151,175,1);
+$ai-base-g: #00bcb3;
+$ai-gs: rgba(126,198,188,1);
+$ai-gg: rgba(176,213,218,1);
+
+//Rails-full
+$rails-full-base: rgba(127,136,182,1);
+$rails-full-gs: rgba(152,178,212,1);
+$rails-full-gg: rgba(185,203,219,1);
+
+//Rails-part
+$rails-part-base: rgba(255,106,90,1);
+$rails-part-gs: rgba(255,165,147,1);
+$rails-part-gg: rgba(255,211,183,1);
+
+//article
+$article-bg: rgba(22,88,157,.05);
+
+
+
+
+@mixin gradient-color{
+  background: linear-gradient(90deg, $base-gs, $base-gg);
+}
+@mixin bg-common{
+  background: linear-gradient(-90deg, #18589D, #131F3F);
+}
+
+@mixin bg-gradient($start,$end){
+  background: linear-gradient(90deg, $start 20%, $end);
+}
+
+// メダルの色
+.medal-bronze{
+  background: linear-gradient(-45deg, #432d13, #5b4a43 30%, #432d13);
+}
+.medal-silver{
+  background: linear-gradient(-45deg, #4d4d4d, #999999 30%, #404040);
+}
+.medal-gold{
+  background: linear-gradient(-45deg, #a38149, #fbd2a3 30%, #a2794a);
+}

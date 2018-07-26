@@ -1,0 +1,15 @@
+@import 'colors.scss';
+
+.form {
+  &-validation {
+    display: inline;
+    font-size: 10px;
+    color: $alert;
+  }
+  &-server-validation {
+    display: inline;
+    label {
+      font-size: 10px;
+    }
+  }
+}

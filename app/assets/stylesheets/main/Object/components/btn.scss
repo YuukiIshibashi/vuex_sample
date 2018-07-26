@@ -1,0 +1,78 @@
+@import '../utility/common.scss';
+
+@mixin btn($width) {
+  display: inline-block;
+  padding: 2% 5%;;
+  z-index: 10;
+  width: $width;
+  @include box-shadow(5px,5px,10px,3px,.3);
+  &:hover{
+    @include box-shadow(2px,2px,5px,0,.5);
+  }
+}
+.btn{
+  @include btn(auto);
+  @media screen and (max-width: 480px){
+    width: 100%;
+    padding: 5% 7%;
+  }
+  @at-root{
+    &-block{
+      @include btn(100%);
+    }
+    &-mincho{
+      font-family: serif;
+    }
+    &-white{
+      background-color:$white;
+    }
+    &-black{
+      color: $white;
+      background-color:rgba(0,0,0,0.6);
+    }
+    &-main{
+      color: $white;
+      @include bg-gradient($main-gs,$main-gg);
+    }
+    &-ai{
+      color: $white;
+      background: $ai-base
+    }
+    &-rails-full{
+      color: $white;
+      background: $rails-full-base
+    }
+    &-rails-part{
+      color: $white;
+      background: $rails-part-base
+    }
+    &-topic{
+      color: $white;
+      background-color: $topic-l
+    }
+    &-briefing{
+      background-color: $topic-l;
+      color: $white;
+    }
+    &-appearance{
+      position: relative;
+      overflow: hidden;
+      &:after{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color:rgba(255,255,255,.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 100%;
+        transition-property: all;
+        transition-duration: .5s;
+      }
+      &:hover:after{
+        margin-top: 0;
+      }
+    }
+  }
+}

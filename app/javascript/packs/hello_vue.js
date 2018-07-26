@@ -7,12 +7,18 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
+import NoVuex from '../noVuex.vue'
 import store from '../store/register.js';
 
 const app = new Vue({
   el: "#app",
   store,
   render: h => h(App)
+})
+
+const noVuex = new Vue({
+  el: "#no_vuex",
+  render: h => h(NoVuex)
 })
 
 
